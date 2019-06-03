@@ -127,6 +127,56 @@ GO
 
 
 
+
+
+CREATE PROC gestao_futebol.CriaJogo (
+	@id			int,
+	@team_home	VARCHAR(100),
+	@team_away  VARCHAR(100)
+) AS
+SET NOCOUNT ON;
+
+DECLARE @id_equipa_home int
+DECLARE @id_equipa_away int
+
+SELECT @id_equipa_home = id FROM [top_5_futebol].[gestao_futebol].[equipa] where nome=@team_home;
+SELECT @id_equipa_away = id FROM [top_5_futebol].[gestao_futebol].[equipa] where nome=@team_away;
+
+INSERT INTO gestao_futebol.jogo([id],[h_team],[a_team]) VALUES(@id, @id_equipa_home, @id_equipa_away);
+
+SET NOCOUNT OFF
+GO
+
+
+
+
+
+
+
+CREATE PROC gestao_futebol.CriaGolo (
+	@id			int,
+	@minuto			int,
+	@jogador	VARCHAR(100)
+) AS
+SET NOCOUNT ON;
+
+DECLARE @id_jogador int
+
+SELECT @id_jogador = id FROM [top_5_futebol].[gestao_futebol].[pessoa] where nome=@jogador;
+
+
+INSERT INTO gestao_futebol.golo([id_jogo],[minuto],[jogador]) VALUES(@id, @minuto, @id_jogador);
+
+SET NOCOUNT OFF
+GO
+
+
+
+
+
+
+
+
 CREATE TABLE gestao_futebol.jornada(
 	data_jogo	  DATE NOT NULL
 	PRIMARY KEY(data_jogo)
@@ -170,8 +220,8 @@ CREATE TABLE gestao_futebol.estadio(
 
 CREATE TABLE gestao_futebol.jogo(
 	id         INT NOT NULL IDENTITY(1,1),
-	n_jornada			   DATE NOT NULL ,
-	estadio				   INT NOT NULL,
+	n_jornada			   DATE,
+	estadio				   INT,
 	h_team				   INT NOT NULL,
 	a_team				   INT NOT NULL,
 	PRIMARY KEY(id),
@@ -225,7 +275,8 @@ CREATE TABLE gestao_futebol.golo(
 	id_jogo		INT  NOT NULL,
 	minuto		INT  NOT NULL,
 	jogador		INT NOT NULL,
-	PRIMARY KEY(id_jogo,minuto),
+	PRIMARY KEY(id_jogo,minuto, jogador),
+	FOREIGN KEY(id_jogo)    REFERENCES gestao_futebol.jogo(id),
 	FOREIGN KEY(jogador)    REFERENCES gestao_futebol.jogador(id_jogador)
 )
 
