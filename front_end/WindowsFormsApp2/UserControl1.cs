@@ -74,22 +74,45 @@ namespace WindowsFormsApp2
             if (!verifySGBDConnection())
                 return;
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM gestao_futebol.equipa", cn);
+            //SqlCommand cmd = new SqlCommand("SELECT * FROM gestao_futebol.equipa", cn);
+            //SqlDataReader reader = cmd.ExecuteReader();
+
+        
+            SqlCommand cmd = new SqlCommand("gestao_futebol.GetTeamInfo", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+            //cmd.Parameters.AddWithValue("@id", 2);
+            cmd.ExecuteNonQuery();
             SqlDataReader reader = cmd.ExecuteReader();
+
+            
+
+
+
+            //cmd.CommandType = CommandType.StoredProcedure;
+           
+
             listBox1.Items.Clear();
+            Console.WriteLine("1111111111111111111111111");
+
+            Console.WriteLine(reader.HasRows);
 
 
             while (reader.Read())
             {
                 Team t = new Team();
+                Console.WriteLine("22222222222222222222222222");
                 t.TeamID       = Convert.ToInt32(reader["id"]);
+                Console.WriteLine("ayyyyyyy");
                 t.TeamName     = reader["nome"].ToString();
                 t.Email        = reader["email"].ToString();
                 // t.Telefone     = Convert.ToInt32(reader["telefone"]);
                 t.DataFundacao = reader["data_fund"].ToString();
-                t.Campeonato   = Convert.ToInt32(reader["campeonato"]);
+              // t.Campeonato   = Convert.ToInt32(reader["campeonato"]);
                 listBox1.Items.Add(t);
             }
+            Console.WriteLine("33333333333333333333");
             cn.Close();
             currentTeam = 0;
             showTeam();
@@ -215,12 +238,14 @@ namespace WindowsFormsApp2
             if (listBox1.Items.Count == 0 | currentTeam < 0)
                 return;
             Team team = new Team();
+
             team = (Team)listBox1.Items[currentTeam];
             txtID.Text         = Convert.ToString(team.TeamID);
             txtName.Text       = team.TeamName;
             txtEmail.Text      = team.Email;
             txtDateFun.Text    = team.DataFundacao;
             txtCampeonato.Text = Convert.ToString(team.Campeonato);
+            
         }
 
         private void RemoveTeam(Int32 teamID)

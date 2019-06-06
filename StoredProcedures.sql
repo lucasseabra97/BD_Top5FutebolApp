@@ -1,16 +1,16 @@
 USE top_5_futebol
 GO
 
-CREATE PROC gestao_futebol.GetTeamInfo (
-	@id   INT
-) AS
+CREATE PROC gestao_futebol.GetTeamInfo 
+	--@id   INT
+ AS
 --SELECT *
 SELECT equipa.id, equipa.nome, equipa.email, equipa.data_fund, camp.nome, pessoa.nome, est.nome
 FROM gestao_futebol.equipa as equipa JOIN gestao_futebol.campeonato as camp ON equipa.campeonato = camp.id
 JOIN gestao_futebol.preside_em as preside_em ON preside_em.team = equipa.id
 JOIN gestao_futebol.pessoa as pessoa ON pessoa.id = preside_em.president
 JOIN gestao_futebol.estadio as est ON est.equipa = equipa.id
-WHERE @id=equipa.id
+--WHERE @id=equipa.id
 
 GO
 
@@ -57,7 +57,7 @@ JOIN [top_5_futebol].[gestao_futebol].equipa as e2 on a1.a_team=e2.id
 
 GO
 
-
+--EXEC gestao_futebol.GetTeamInfo 2
 --EXEC gestao_futebol.GetPoints 2
 
 -----------------------------------------------------------------------------------------------------------------
