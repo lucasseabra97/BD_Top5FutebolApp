@@ -75,3 +75,10 @@ deallocate cur
 go
 
 EXEC [dbo].[DeleteAllProcedures]
+go
+
+use top_5_futebol;
+go
+
+DROP FUNCTION gestao_futebol.GolosPorJogoFunction
+DROP FUNCTION gestao_futebol.TabelaGolosPorJogo
