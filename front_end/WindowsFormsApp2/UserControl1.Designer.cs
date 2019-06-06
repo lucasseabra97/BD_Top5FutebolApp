@@ -45,10 +45,12 @@
             this.txtStadium = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPoints = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bttnDelete = new System.Windows.Forms.Button();
+            this.bttnEdit = new System.Windows.Forms.Button();
+            this.bttnAdd = new System.Windows.Forms.Button();
             this.loadDataTeam = new System.Windows.Forms.Button();
+            this.bttnOK = new System.Windows.Forms.Button();
+            this.bttnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -190,32 +192,35 @@
             this.txtPoints.Size = new System.Drawing.Size(100, 20);
             this.txtPoints.TabIndex = 17;
             // 
-            // button3
+            // bttnDelete
             // 
-            this.button3.Location = new System.Drawing.Point(480, 233);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bttnDelete.Location = new System.Drawing.Point(480, 233);
+            this.bttnDelete.Name = "bttnDelete";
+            this.bttnDelete.Size = new System.Drawing.Size(75, 23);
+            this.bttnDelete.TabIndex = 21;
+            this.bttnDelete.Text = "Delete";
+            this.bttnDelete.UseVisualStyleBackColor = true;
+            this.bttnDelete.Click += new System.EventHandler(this.bttnDelete_Click);
             // 
-            // button2
+            // bttnEdit
             // 
-            this.button2.Location = new System.Drawing.Point(358, 233);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Edit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bttnEdit.Location = new System.Drawing.Point(358, 233);
+            this.bttnEdit.Name = "bttnEdit";
+            this.bttnEdit.Size = new System.Drawing.Size(75, 23);
+            this.bttnEdit.TabIndex = 20;
+            this.bttnEdit.Text = "Edit";
+            this.bttnEdit.UseVisualStyleBackColor = true;
+            this.bttnEdit.Click += new System.EventHandler(this.bttnEdit_Click);
             // 
-            // button1
+            // bttnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(232, 233);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bttnAdd.Location = new System.Drawing.Point(232, 233);
+            this.bttnAdd.Name = "bttnAdd";
+            this.bttnAdd.Size = new System.Drawing.Size(75, 23);
+            this.bttnAdd.TabIndex = 19;
+            this.bttnAdd.Text = "Add";
+            this.bttnAdd.UseVisualStyleBackColor = true;
+            this.bttnAdd.Click += new System.EventHandler(this.bttnAdd_Click);
             // 
             // loadDataTeam
             // 
@@ -227,15 +232,37 @@
             this.loadDataTeam.UseVisualStyleBackColor = true;
             this.loadDataTeam.Click += new System.EventHandler(this.loadDataTeam_Click);
             // 
+            // bttnOK
+            // 
+            this.bttnOK.Location = new System.Drawing.Point(253, 233);
+            this.bttnOK.Name = "bttnOK";
+            this.bttnOK.Size = new System.Drawing.Size(75, 23);
+            this.bttnOK.TabIndex = 23;
+            this.bttnOK.Text = "OK";
+            this.bttnOK.UseVisualStyleBackColor = true;
+            this.bttnOK.Click += new System.EventHandler(this.bttnOK_Click);
+            // 
+            // bttnCancel
+            // 
+            this.bttnCancel.Location = new System.Drawing.Point(372, 232);
+            this.bttnCancel.Name = "bttnCancel";
+            this.bttnCancel.Size = new System.Drawing.Size(75, 23);
+            this.bttnCancel.TabIndex = 24;
+            this.bttnCancel.Text = "CANCEL";
+            this.bttnCancel.UseVisualStyleBackColor = true;
+            this.bttnCancel.Click += new System.EventHandler(this.bttnCancel_Click);
+            // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.Controls.Add(this.bttnCancel);
+            this.Controls.Add(this.bttnOK);
             this.Controls.Add(this.loadDataTeam);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bttnDelete);
+            this.Controls.Add(this.bttnEdit);
+            this.Controls.Add(this.bttnAdd);
             this.Controls.Add(this.txtPoints);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtStadium);
@@ -279,9 +306,11 @@
         private System.Windows.Forms.TextBox txtStadium;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPoints;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bttnDelete;
+        private System.Windows.Forms.Button bttnEdit;
+        private System.Windows.Forms.Button bttnAdd;
         private System.Windows.Forms.Button loadDataTeam;
+        private System.Windows.Forms.Button bttnOK;
+        private System.Windows.Forms.Button bttnCancel;
     }
 }

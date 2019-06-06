@@ -15,7 +15,7 @@ public class Team
         private String _teamName;
         private String _email;
         private Int32 _telefone;
-        private DateTime _dataFundacao;
+        private String _dataFundacao;
         private Int32 _campeonatoID;
 
         public Int32 TeamID
@@ -49,10 +49,10 @@ public class Team
             set { _telefone = value; }
         }
 
-        public DateTime DataFundacao
-        {
+        public String DataFundacao
+        {   
             get { return _dataFundacao; }
-            set{ _dataFundacao = value;}
+            set { _dataFundacao = value; }
         }
         public Int32 Campeonato
         {
