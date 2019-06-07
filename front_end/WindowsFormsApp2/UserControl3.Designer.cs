@@ -54,14 +54,14 @@
             this.tableToolStripMenuItem,
             this.scoresToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 20);
+            this.toolStripMenuItem1.Text = "Portuguese Championship";
             // 
             // resultToolStripMenuItem
             // 
             this.resultToolStripMenuItem.Name = "resultToolStripMenuItem";
             this.resultToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.resultToolStripMenuItem.Text = "Result";
+            this.resultToolStripMenuItem.Text = "All Result";
             this.resultToolStripMenuItem.Click += new System.EventHandler(this.resultToolStripMenuItem_Click);
             // 
             // tableToolStripMenuItem
@@ -69,12 +69,14 @@
             this.tableToolStripMenuItem.Name = "tableToolStripMenuItem";
             this.tableToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tableToolStripMenuItem.Text = "Table";
+            this.tableToolStripMenuItem.Click += new System.EventHandler(this.tableToolStripMenuItem_Click);
             // 
             // scoresToolStripMenuItem
             // 
             this.scoresToolStripMenuItem.Name = "scoresToolStripMenuItem";
             this.scoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scoresToolStripMenuItem.Text = "Scores";
+            this.scoresToolStripMenuItem.Click += new System.EventHandler(this.scoresToolStripMenuItem_Click);
             // 
             // listBox1
             // 

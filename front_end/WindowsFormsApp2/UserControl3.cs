@@ -76,5 +76,59 @@ namespace WindowsFormsApp2
             currentPlayer = 0;
             
         }
+
+        private void tableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("gestao_futebol.GetPoints", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.ExecuteNonQuery();
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox1.Items.Clear();
+            //listBox1.Items.Clear();
+
+            while (reader.Read())
+            {
+                Points p = new Points();
+
+                p.PointID = Convert.ToInt32(reader["id"].ToString());
+                p.PointName = reader["nome"].ToString();
+                p.Ponto = Convert.ToInt32(reader["pontos"].ToString());
+                listBox1.Items.Add(p);
+            }
+
+            cn.Close();
+            currentPlayer = 0;
+        }
+
+        private void scoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("gestao_futebol.GetMarcadores", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.ExecuteNonQuery();
+            SqlDataReader reader = cmd.ExecuteReader();
+            listBox1.Items.Clear();
+            //listBox1.Items.Clear();
+
+            while (reader.Read())
+            {
+                Marcadores m = new Marcadores();
+
+                m.GoloID = Convert.ToInt32(reader["id"].ToString());
+                m.GoloName = reader["nome"].ToString();
+                m.Golo = Convert.ToInt32(reader["golos"].ToString());
+                listBox1.Items.Add(m);
+            }
+
+            cn.Close();
+            currentPlayer = 0;
+        }
     }
 }
