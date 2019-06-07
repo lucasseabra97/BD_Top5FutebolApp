@@ -1,7 +1,7 @@
-USE top_5_futebol
+USE p8g7
 GO
 
-CREATE SCHEMA gestao_futebol
+--CREATE SCHEMA gestao_futebol
 GO
 
 
@@ -69,7 +69,7 @@ CREATE TABLE gestao_futebol.pessoa(
 )
 
 
-)
+
 
 CREATE TABLE gestao_futebol.presidente(
 	id_presidente   INT NOT NULL,
