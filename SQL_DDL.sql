@@ -1,7 +1,7 @@
 USE top_5_futebol
 GO
 
---CREATE SCHEMA gestao_futebol
+CREATE SCHEMA gestao_futebol
 GO
 
 
@@ -68,12 +68,7 @@ CREATE TABLE gestao_futebol.pessoa(
 	
 )
 
---aux table just for adding de values from de csv file
---drop table gestao_futebol.pessoa_staging
-CREATE TABLE gestao_futebol.pessoa_staging(
-	nome		VARCHAR(100) NOT NULL,
-	data_nasc   VARCHAR(50) NOT NULL,
-	salario		VARCHAR(50)
+
 )
 
 CREATE TABLE gestao_futebol.presidente(

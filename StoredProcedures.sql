@@ -27,10 +27,7 @@ GO
 
 
 -------------------------------------------------------------------------------------------------------------------
-CREATE PROC gestao_futebol.TabelaResultados
-	--@id   INT
- AS
---SELECT *
+CREATE PROC gestao_futebol.TabelaResultados AS
 CREATE TABLE #resultados(
 	id		INT,
 	h_team	INT,
@@ -67,20 +64,11 @@ JOIN gestao_futebol.TabelaGolosPorJogoAway() as h
 ON  h.id_jogo = #resultados.id
 
 
-
-
 SELECT #resultados.id, h_team, a_team, ISNULL(h_score, 0 ) as h_score, ISNULL(a_score, 0 ) as a_score, equipa.nome as h_name, equipa2.nome as a_name
 --SELECT *
 FROM #resultados JOIN gestao_futebol.equipa as equipa on equipa.id = h_team
 JOIN gestao_futebol.equipa as equipa2 on equipa2.id = a_team
 
-
-
-
---SELECT *
---FROM gestao_futebol.TabelaGolosPorJogoHome()
-
---SELECT * FROM #resultados
 
 GO
 
@@ -130,7 +118,6 @@ ON  h.id_jogo = #resultados.id
 
 
 SELECT #resultados.id, h_team, a_team, ISNULL(h_score, 0 ) as h_score, ISNULL(a_score, 0 ) as a_score, equipa.nome as h_name, equipa2.nome as a_name INTO #res
---SELECT *
 FROM #resultados JOIN gestao_futebol.equipa as equipa on equipa.id = h_team
 JOIN gestao_futebol.equipa as equipa2 on equipa2.id = a_team
 
@@ -178,7 +165,6 @@ SELECT @ClubID = id FROM [top_5_futebol].[gestao_futebol].[equipa] where nome=@n
 
 IF @ClubID is NULL
 BEGIN
-	--PRINT 'There are ' + CAST(@ClubID AS VARCHAR) + ' alias combinations did not match a record';
 	SELECT @ClubID;
 
 	SELECT nome
@@ -407,33 +393,6 @@ INSERT INTO gestao_futebol.golo([id_jogo],[minuto],[jogador]) VALUES(@id, @minut
 
 SET NOCOUNT OFF
 GO
-
------------------------------------------------------------------------
-
-
-
---CREATE PROCEDURE gestao_futebol.GolosPorJogo @id INT
---AS
-----DECLARE @id INT;
---SET @id =2;
---select 
---    sum
---	(
---		case 
---			when @id=h_team and home_score > away_score then 3
---			when @id=a_team and home_score < away_score then 3
---			when @id=h_team and home_score = away_score then 1
---			when @id=a_team and home_score = away_score then 1
---			else 0 
---		end
---	) ExecCount
---	select *
---from gestao_futebol.Tabela()
---
---GO
---
----------------------------------------------------------------------------
-
 
 
 
