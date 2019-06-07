@@ -130,3 +130,70 @@ GO
 
 
 -------------------------------------------------------------------------------------------------------------------
+
+
+
+CREATE FUNCTION gestao_futebol.TabelaGolosPorJogoF (
+    
+)
+RETURNS @resultados TABLE(
+	id		INT,
+	h_team	INT,
+	a_team	INT,
+	h_score	INT,
+	a_score	INT
+)
+AS
+
+
+
+
+begin 
+
+INSERT INTO @resultados (id)
+SELECT id FROM gestao_futebol.jogo
+
+INSERT INTO @resultados(h_team)
+SELECT jogo.h_team
+FROM @resultados as r
+JOIN gestao_futebol.jogo as jogo
+ON  r.id = jogo.id
+
+INSERT INTO @resultados(a_team)
+SELECT jogo.a_team
+FROM @resultados as r
+JOIN gestao_futebol.jogo as jogo
+ON  r.id = jogo.id
+
+INSERT INTO @resultados(h_score)
+SELECT h.h_score_c
+FROM @resultados as r
+JOIN gestao_futebol.TabelaGolosPorJogoHome() as h
+ON  h.id_jogo = r.id
+
+INSERT INTO @resultados(a_score)
+SELECT  h.a_score_c
+FROM @resultados as r
+JOIN gestao_futebol.TabelaGolosPorJogoAway() as h
+ON  h.id_jogo = r.id
+
+
+
+INSERT INTO @resultados(h_score)
+SELECT ISNULL(h_score, 0 ) FROM @resultados
+
+
+INSERT INTO @resultados(a_score)
+SELECT ISNULL(a_score, 0 ) FROM @resultados
+
+
+
+
+--SELECT @resultados.id, h_team, a_team, ISNULL(h_score, 0 ) as h_score, ISNULL(a_score, 0 ) as a_score, equipa.nome as h_name, equipa2.nome as a_name
+----SELECT *
+--FROM @resultados JOIN gestao_futebol.equipa as equipa on equipa.id = h_team
+--JOIN gestao_futebol.equipa as equipa2 on equipa2.id = a_team
+return
+end
+
+GO

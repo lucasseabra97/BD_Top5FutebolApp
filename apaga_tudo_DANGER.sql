@@ -85,3 +85,5 @@ DROP FUNCTION gestao_futebol.TabelaGolosPorJogo
 DROP FUNCTION gestao_futebol.TabelaGolosPorJogoHome
 DROP FUNCTION gestao_futebol.TabelaGolosPorJogoAway
 DROP FUNCTION gestao_futebol.TabelaGolosPorJogoAwayF
+
+DROP FUNCTION gestao_futebol.TabelaGolosPorJogoF
