@@ -203,7 +203,7 @@ CREATE PROC gestao_futebol.CriaJogadorSimples (
 	@data_nasc		VARCHAR(50),
 	@altura				INT,
 	@peso				INT,
-	@posicao	VARCHAR(100),
+	@posicao		VARCHAR(100),
 	@salario		VARCHAR(50)
 ) AS
 
@@ -212,12 +212,11 @@ SET NOCOUNT ON;
 INSERT INTO gestao_futebol.pessoa([nome],[data_nasc],[salario]) VALUES(@nome,@data_nasc,@salario);
 
 DECLARE @IncID int
-DECLARE @ClubID int
 SET @IncID = SCOPE_IDENTITY();
 
 
 
-INSERT INTO gestao_futebol.jogador([id_jogador], [altura], [peso]) VALUES (@IncID, @altura, @peso);
+INSERT INTO gestao_futebol.jogador([id_jogador], [altura], [peso], [posicao]) VALUES (@IncID, @altura, @peso, @posicao);
 
 
 
@@ -231,8 +230,60 @@ GO
 
 
 
+----------------------------------------------------------
 
 
+CREATE PROC gestao_futebol.EditaJogador (
+	@id				INT,
+	@nome			VARCHAR(100), 
+	@data_nasc		VARCHAR(50),
+	@altura				INT,
+	@peso				INT,
+	@posicao		VARCHAR(100),
+	@salario		VARCHAR(50)
+) AS
+
+SET NOCOUNT ON;
+
+
+UPDATE gestao_futebol.pessoa
+SET gestao_futebol.pessoa.nome = @nome
+FROM gestao_futebol.pessoa
+WHERE gestao_futebol.pessoa.id = @id 
+
+
+UPDATE gestao_futebol.pessoa
+SET gestao_futebol.pessoa.data_nasc = @data_nasc
+FROM gestao_futebol.pessoa
+WHERE gestao_futebol.pessoa.id = @id 
+
+UPDATE gestao_futebol.pessoa
+SET gestao_futebol.pessoa.salario = @salario
+FROM gestao_futebol.pessoa
+WHERE gestao_futebol.pessoa.id = @id 
+
+
+   --
+UPDATE gestao_futebol.jogador
+SET gestao_futebol.jogador.altura = @altura
+FROM gestao_futebol.jogador
+WHERE gestao_futebol.jogador.id_jogador = @id 
+
+   --
+UPDATE gestao_futebol.jogador
+SET gestao_futebol.jogador.peso = @peso
+FROM gestao_futebol.jogador
+WHERE gestao_futebol.jogador.id_jogador = @id 
+
+   --
+UPDATE gestao_futebol.jogador
+SET gestao_futebol.jogador.posicao= @posicao
+FROM gestao_futebol.jogador
+WHERE gestao_futebol.jogador.id_jogador = @id 
+
+
+SET NOCOUNT OFF
+GO
 
 
 
