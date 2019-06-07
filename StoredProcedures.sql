@@ -83,45 +83,73 @@ JOIN gestao_futebol.equipa as equipa2 on equipa2.id = a_team
 --SELECT * FROM #resultados
 
 GO
+
+
 -----------------------------------------------------------------------------------------------------------------
-CREATE PROC gestao_futebol.GetPoints (
-	@id   INT
-) AS
+
+CREATE PROC gestao_futebol.GetPoints AS
 
 
- (SELECT a1.id_jogo, a1.h_team, a1.a_team, e1.nome, a1.home_score, e2.nome, a2.away_score
-FROM 
-(
-SELECT id_jogo, h_team, a_team,  COUNT(*) as home_score
-FROM [top_5_futebol].[gestao_futebol].jogo as jogo JOIN [top_5_futebol].[gestao_futebol].golo as golo ON jogo.id = golo.id_jogo
-JOIN [top_5_futebol].[gestao_futebol].pessoa AS pessoa ON golo.jogador = pessoa.id
-JOIN [top_5_futebol].[gestao_futebol].joga_em as jogaem ON pessoa.id=jogaem.player
-WHERE team=h_team
-GROUP BY id_jogo, h_team, a_team
-)
-as a1 
-JOIN 
-(
-SELECT id_jogo, h_team, a_team,  COUNT(*)as away_score
-FROM [top_5_futebol].[gestao_futebol].jogo as jogo JOIN [top_5_futebol].[gestao_futebol].golo as golo ON jogo.id = golo.id_jogo
-JOIN [top_5_futebol].[gestao_futebol].pessoa AS pessoa ON golo.jogador = pessoa.id
-JOIN [top_5_futebol].[gestao_futebol].joga_em as jogaem ON pessoa.id=jogaem.player
-WHERE team=a_team
-GROUP BY id_jogo, h_team, a_team
+
+
+CREATE TABLE #resultados(
+	id		INT,
+	h_team	INT,
+	a_team	INT,
+	h_score	INT,
+	a_score	INT
 )
 
-as a2 
-ON a1.id_jogo=a2.id_jogo 
-JOIN [top_5_futebol].[gestao_futebol].equipa as e1 on a1.h_team=e1.id
-JOIN [top_5_futebol].[gestao_futebol].equipa as e2 on a1.a_team=e2.id
-);
+INSERT INTO #resultados (id)
+SELECT id FROM gestao_futebol.jogo
+
+UPDATE #resultados
+SET #resultados.h_team = jogo.h_team
+FROM #resultados 
+JOIN gestao_futebol.jogo as jogo
+ON  #resultados.id = jogo.id
+
+UPDATE #resultados
+SET #resultados.a_team = jogo.a_team
+FROM #resultados 
+JOIN gestao_futebol.jogo as jogo
+ON  #resultados.id = jogo.id
+
+UPDATE #resultados
+SET #resultados.h_score = h.h_score_c
+FROM #resultados 
+JOIN gestao_futebol.TabelaGolosPorJogoHome() as h
+ON  h.id_jogo = #resultados.id
+
+UPDATE #resultados
+SET #resultados.a_score = h.a_score_c
+FROM #resultados 
+JOIN gestao_futebol.TabelaGolosPorJogoAway() as h
+ON  h.id_jogo = #resultados.id
 
 
+
+SELECT #resultados.id, h_team, a_team, ISNULL(h_score, 0 ) as h_score, ISNULL(a_score, 0 ) as a_score, equipa.nome as h_name, equipa2.nome as a_name INTO #res
+--SELECT *
+FROM #resultados JOIN gestao_futebol.equipa as equipa on equipa.id = h_team
+JOIN gestao_futebol.equipa as equipa2 on equipa2.id = a_team
+
+SELECT equipa.id, equipa.nome , sum 
+	(
+		case 
+			when equipa.id=h_team and h_score > a_score then 3
+			when equipa.id=a_team and h_score < a_score then 3
+			when equipa.id=h_team and h_score = a_score then 1
+			when equipa.id=a_team and h_score = a_score then 1
+			else 0 
+		end
+	) pontos 
+FROM #res as r
+JOIN gestao_futebol.equipa as equipa ON equipa.id=r.h_team OR equipa.id=r.a_team
+GROUP BY equipa.id, equipa.nome
+ORDER BY pontos DESC
 
 GO
-
---EXEC gestao_futebol.GetTeamInfo 2
---EXEC gestao_futebol.GetPoints 2
 
 -----------------------------------------------------------------------------------------------------------------
 
