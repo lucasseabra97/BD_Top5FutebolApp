@@ -27,9 +27,62 @@ GO
 
 
 -------------------------------------------------------------------------------------------------------------------
+CREATE PROC gestao_futebol.TabelaResultados
+	--@id   INT
+ AS
+--SELECT *
+CREATE TABLE #resultados(
+	id		INT,
+	h_team	INT,
+	a_team	INT,
+	h_score	INT,
+	a_score	INT
+)
+
+INSERT INTO #resultados (id)
+SELECT id FROM gestao_futebol.jogo
+
+UPDATE #resultados
+SET #resultados.h_team = jogo.h_team
+FROM #resultados 
+JOIN gestao_futebol.jogo as jogo
+ON  #resultados.id = jogo.id
+
+UPDATE #resultados
+SET #resultados.a_team = jogo.a_team
+FROM #resultados 
+JOIN gestao_futebol.jogo as jogo
+ON  #resultados.id = jogo.id
+
+UPDATE #resultados
+SET #resultados.h_score = h.h_score_c
+FROM #resultados 
+JOIN gestao_futebol.TabelaGolosPorJogoHome() as h
+ON  h.id_jogo = #resultados.id
+
+UPDATE #resultados
+SET #resultados.a_score = h.a_score_c
+FROM #resultados 
+JOIN gestao_futebol.TabelaGolosPorJogoAway() as h
+ON  h.id_jogo = #resultados.id
 
 
 
+
+SELECT #resultados.id, h_team, a_team, ISNULL(h_score, 0 ) as h_score, ISNULL(a_score, 0 ) as a_score, equipa.nome as h_name, equipa2.nome as a_name
+--SELECT *
+FROM #resultados JOIN gestao_futebol.equipa as equipa on equipa.id = h_team
+JOIN gestao_futebol.equipa as equipa2 on equipa2.id = a_team
+
+
+
+
+--SELECT *
+--FROM gestao_futebol.TabelaGolosPorJogoHome()
+
+--SELECT * FROM #resultados
+
+GO
 -----------------------------------------------------------------------------------------------------------------
 CREATE PROC gestao_futebol.GetPoints (
 	@id   INT
@@ -37,7 +90,6 @@ CREATE PROC gestao_futebol.GetPoints (
 
 
  (SELECT a1.id_jogo, a1.h_team, a1.a_team, e1.nome, a1.home_score, e2.nome, a2.away_score
---SELECT *
 FROM 
 (
 SELECT id_jogo, h_team, a_team,  COUNT(*) as home_score
@@ -110,6 +162,44 @@ INSERT INTO gestao_futebol.preside_em([team],[president], [data_ini], [data_fim]
 
 SET NOCOUNT OFF
 GO
+
+
+
+
+
+
+
+
+CREATE PROC gestao_futebol.CriaJogadorSimples (
+	@nome			VARCHAR(100), 
+	@data_nasc		VARCHAR(50),
+	@altura				INT,
+	@peso				INT,
+	@posicao	VARCHAR(100),
+	@salario		VARCHAR(50)
+) AS
+
+SET NOCOUNT ON;
+
+INSERT INTO gestao_futebol.pessoa([nome],[data_nasc],[salario]) VALUES(@nome,@data_nasc,@salario);
+
+DECLARE @IncID int
+DECLARE @ClubID int
+SET @IncID = SCOPE_IDENTITY();
+
+
+
+INSERT INTO gestao_futebol.jogador([id_jogador], [altura], [peso]) VALUES (@IncID, @altura, @peso);
+
+
+
+
+
+
+
+SET NOCOUNT OFF
+GO
+
 
 
 
@@ -239,27 +329,29 @@ INSERT INTO gestao_futebol.golo([id_jogo],[minuto],[jogador]) VALUES(@id, @minut
 SET NOCOUNT OFF
 GO
 
+-----------------------------------------------------------------------
 
 
 
-CREATE PROCEDURE gestao_futebol.GolosPorJogo @id INT
-AS
---DECLARE @id INT;
-SET @id =2;
-select 
-    sum
-	(
-		case 
-			when @id=h_team and home_score > away_score then 3
-			when @id=a_team and home_score < away_score then 3
-			when @id=h_team and home_score = away_score then 1
-			when @id=a_team and home_score = away_score then 1
-			else 0 
-		end
-	) ExecCount
-from gestao_futebol.GolosPorJogoFunction()
-
-GO
-
+--CREATE PROCEDURE gestao_futebol.GolosPorJogo @id INT
+--AS
+----DECLARE @id INT;
+--SET @id =2;
+--select 
+--    sum
+--	(
+--		case 
+--			when @id=h_team and home_score > away_score then 3
+--			when @id=a_team and home_score < away_score then 3
+--			when @id=h_team and home_score = away_score then 1
+--			when @id=a_team and home_score = away_score then 1
+--			else 0 
+--		end
+--	) ExecCount
+--	select *
+--from gestao_futebol.Tabela()
+--
+--GO
+--
 ---------------------------------------------------------------------------
 

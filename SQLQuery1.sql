@@ -5,8 +5,8 @@ GO
 GO
 
 ----------------------------------------------------------------------------------------------------------------------------------------
-
-:setvar path "C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp"
+:setvar path "C:\Users\Andre Marques\Documents\BD\BD_Top5FutebolApp"
+--:setvar path "C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp"
 --:r $(path)\myfile.sql 
 
 :r $(path)\apaga_tudo_DANGER.sql
