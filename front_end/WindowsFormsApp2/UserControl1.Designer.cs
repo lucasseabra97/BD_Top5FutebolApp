@@ -157,7 +157,7 @@
             // 
             this.txtPresi.Location = new System.Drawing.Point(404, 121);
             this.txtPresi.Name = "txtPresi";
-            this.txtPresi.Size = new System.Drawing.Size(100, 20);
+            this.txtPresi.Size = new System.Drawing.Size(151, 20);
             this.txtPresi.TabIndex = 12;
             // 
             // label7
@@ -173,13 +173,13 @@
             // 
             this.txtStadium.Location = new System.Drawing.Point(80, 189);
             this.txtStadium.Name = "txtStadium";
-            this.txtStadium.Size = new System.Drawing.Size(100, 20);
+            this.txtStadium.Size = new System.Drawing.Size(128, 20);
             this.txtStadium.TabIndex = 14;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(226, 158);
+            this.label9.Location = new System.Drawing.Point(248, 158);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 13);
             this.label9.TabIndex = 16;
@@ -187,7 +187,7 @@
             // 
             // txtPoints
             // 
-            this.txtPoints.Location = new System.Drawing.Point(229, 189);
+            this.txtPoints.Location = new System.Drawing.Point(251, 189);
             this.txtPoints.Name = "txtPoints";
             this.txtPoints.Size = new System.Drawing.Size(100, 20);
             this.txtPoints.TabIndex = 17;

@@ -74,10 +74,7 @@ namespace WindowsFormsApp2
             if (!verifySGBDConnection())
                 return;
 
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM gestao_futebol.equipa", cn);
-            //SqlDataReader reader = cmd.ExecuteReader();
 
-        
             SqlCommand cmd = new SqlCommand("gestao_futebol.GetTeamInfo", cn);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -86,33 +83,28 @@ namespace WindowsFormsApp2
             cmd.ExecuteNonQuery();
             SqlDataReader reader = cmd.ExecuteReader();
 
-            
-
-
-
-            //cmd.CommandType = CommandType.StoredProcedure;
-           
+          
 
             listBox1.Items.Clear();
-            Console.WriteLine("1111111111111111111111111");
+            
 
-            Console.WriteLine(reader.HasRows);
+            //Console.WriteLine(reader.HasRows);
 
 
             while (reader.Read())
             {
                 Team t = new Team();
-                Console.WriteLine("22222222222222222222222222");
+                
                 t.TeamID       = Convert.ToInt32(reader["id"]);
-                Console.WriteLine("ayyyyyyy");
                 t.TeamName     = reader["nome"].ToString();
                 t.Email        = reader["email"].ToString();
-                // t.Telefone     = Convert.ToInt32(reader["telefone"]);
                 t.DataFundacao = reader["data_fund"].ToString();
-              // t.Campeonato   = Convert.ToInt32(reader["campeonato"]);
+                t.Campeonato   = reader["campeonato"].ToString();
+                t.President    = reader["presidente"].ToString();
+                t.Stadium      = reader["estadio"].ToString();
                 listBox1.Items.Add(t);
             }
-            Console.WriteLine("33333333333333333333");
+            
             cn.Close();
             currentTeam = 0;
             showTeam();
@@ -162,12 +154,15 @@ namespace WindowsFormsApp2
                 return;
             SqlCommand cmd = new SqlCommand();
            
-            cmd.CommandText = "INSERT INTO gestao_futebol.equipa(nome,email,data_fund,campeonato) VALUES (@nome,@email,@data_fund,@campeonato) ";
+            cmd.CommandText = "INSERT INTO gestao_futebol.equipa(nome,email,data_fund,campeonato) VALUES (@nome,@email,@data_fund,@campeonato)";
             cmd.Parameters.Clear();
+            
             cmd.Parameters.AddWithValue("@nome", t.TeamName);
             cmd.Parameters.AddWithValue("@email", t.Email);
             cmd.Parameters.AddWithValue("@data_fund", t.DataFundacao);
             cmd.Parameters.AddWithValue("@campeonato", t.Campeonato);
+            //cmd.Parameters.AddWithValue("@presidente", t.President);
+            //cmd.Parameters.AddWithValue("@estadio", t.Stadium);
             cmd.Connection = cn;
 
             try
@@ -244,8 +239,9 @@ namespace WindowsFormsApp2
             txtName.Text       = team.TeamName;
             txtEmail.Text      = team.Email;
             txtDateFun.Text    = team.DataFundacao;
-            txtCampeonato.Text = Convert.ToString(team.Campeonato);
-            
+            txtCampeonato.Text = team.Campeonato;
+            txtPresi.Text      = team.President;
+            txtStadium.Text    = team.Stadium;
         }
 
         private void RemoveTeam(Int32 teamID)
@@ -328,12 +324,11 @@ namespace WindowsFormsApp2
             Team team = new Team();
             try
             {
-
-              
+                
                 team.TeamName = txtName.Text;
                 team.Email = txtEmail.Text;
                 team.DataFundacao = txtDateFun.Text;
-                team.Campeonato = Int32.Parse(txtCampeonato.Text);
+                team.Campeonato = txtCampeonato.Text;
 
             }
             catch (Exception ex)
@@ -364,6 +359,8 @@ namespace WindowsFormsApp2
                 MessageBox.Show(ex.Message);
             }
             listBox1.Enabled = true;
+            int idx = listBox1.FindString(txtID.Text);
+            listBox1.SelectedIndex = idx;
             ShowButtons();
         }
 

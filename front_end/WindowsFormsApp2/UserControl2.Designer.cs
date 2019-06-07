@@ -29,27 +29,28 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDataNasc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtSalario = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtAltura = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtPeso = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtPosicao = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bttAdd = new System.Windows.Forms.Button();
+            this.bttEdit = new System.Windows.Forms.Button();
+            this.bttDelete = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.bttOK = new System.Windows.Forms.Button();
+            this.bttCancel = new System.Windows.Forms.Button();
+            this.loadDataPlayer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -61,19 +62,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
-            // textBox1
+            // txtID
             // 
-            this.textBox1.Location = new System.Drawing.Point(43, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtID.Location = new System.Drawing.Point(43, 64);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.TabIndex = 1;
             // 
-            // textBox2
+            // txtName
             // 
-            this.textBox2.Location = new System.Drawing.Point(187, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtName.Location = new System.Drawing.Point(187, 64);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(218, 20);
+            this.txtName.TabIndex = 3;
             // 
             // label2
             // 
@@ -84,13 +85,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Nome";
             // 
-            // textBox3
+            // txtDataNasc
             // 
-            this.textBox3.Location = new System.Drawing.Point(435, 64);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 5;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtDataNasc.Location = new System.Drawing.Point(435, 64);
+            this.txtDataNasc.Name = "txtDataNasc";
+            this.txtDataNasc.Size = new System.Drawing.Size(100, 20);
+            this.txtDataNasc.TabIndex = 5;
+            this.txtDataNasc.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label3
             // 
@@ -102,12 +103,12 @@
             this.label3.Text = "Data de Nascimento";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBox4
+            // txtSalario
             // 
-            this.textBox4.Location = new System.Drawing.Point(43, 126);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 7;
+            this.txtSalario.Location = new System.Drawing.Point(43, 126);
+            this.txtSalario.Name = "txtSalario";
+            this.txtSalario.Size = new System.Drawing.Size(100, 20);
+            this.txtSalario.TabIndex = 7;
             // 
             // label4
             // 
@@ -118,12 +119,12 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Salário";
             // 
-            // textBox5
+            // txtAltura
             // 
-            this.textBox5.Location = new System.Drawing.Point(187, 126);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(62, 20);
-            this.textBox5.TabIndex = 9;
+            this.txtAltura.Location = new System.Drawing.Point(187, 126);
+            this.txtAltura.Name = "txtAltura";
+            this.txtAltura.Size = new System.Drawing.Size(62, 20);
+            this.txtAltura.TabIndex = 9;
             // 
             // label5
             // 
@@ -134,12 +135,12 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Altura";
             // 
-            // textBox6
+            // txtPeso
             // 
-            this.textBox6.Location = new System.Drawing.Point(289, 126);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(62, 20);
-            this.textBox6.TabIndex = 11;
+            this.txtPeso.Location = new System.Drawing.Point(289, 126);
+            this.txtPeso.Name = "txtPeso";
+            this.txtPeso.Size = new System.Drawing.Size(62, 20);
+            this.txtPeso.TabIndex = 11;
             // 
             // label6
             // 
@@ -150,12 +151,12 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Peso";
             // 
-            // textBox7
+            // txtPosicao
             // 
-            this.textBox7.Location = new System.Drawing.Point(382, 126);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(62, 20);
-            this.textBox7.TabIndex = 13;
+            this.txtPosicao.Location = new System.Drawing.Point(382, 126);
+            this.txtPosicao.Name = "txtPosicao";
+            this.txtPosicao.Size = new System.Drawing.Size(62, 20);
+            this.txtPosicao.TabIndex = 13;
             // 
             // label7
             // 
@@ -182,32 +183,35 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Golos Marcados";
             // 
-            // button1
+            // bttAdd
             // 
-            this.button1.Location = new System.Drawing.Point(196, 175);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bttAdd.Location = new System.Drawing.Point(196, 175);
+            this.bttAdd.Name = "bttAdd";
+            this.bttAdd.Size = new System.Drawing.Size(75, 23);
+            this.bttAdd.TabIndex = 16;
+            this.bttAdd.Text = "Add";
+            this.bttAdd.UseVisualStyleBackColor = true;
+            this.bttAdd.Click += new System.EventHandler(this.bttAdd_Click);
             // 
-            // button2
+            // bttEdit
             // 
-            this.button2.Location = new System.Drawing.Point(289, 175);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Edit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bttEdit.Location = new System.Drawing.Point(289, 175);
+            this.bttEdit.Name = "bttEdit";
+            this.bttEdit.Size = new System.Drawing.Size(75, 23);
+            this.bttEdit.TabIndex = 17;
+            this.bttEdit.Text = "Edit";
+            this.bttEdit.UseVisualStyleBackColor = true;
+            this.bttEdit.Click += new System.EventHandler(this.bttEdit_Click);
             // 
-            // button3
+            // bttDelete
             // 
-            this.button3.Location = new System.Drawing.Point(382, 175);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bttDelete.Location = new System.Drawing.Point(382, 175);
+            this.bttDelete.Name = "bttDelete";
+            this.bttDelete.Size = new System.Drawing.Size(75, 23);
+            this.bttDelete.TabIndex = 18;
+            this.bttDelete.Text = "Delete";
+            this.bttDelete.UseVisualStyleBackColor = true;
+            this.bttDelete.Click += new System.EventHandler(this.bttDelete_Click);
             // 
             // listBox1
             // 
@@ -216,54 +220,65 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(492, 134);
             this.listBox1.TabIndex = 19;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
             // 
-            // comboBox1
+            // bttOK
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "GOALS SCORED",
-            "SALARY"});
-            this.comboBox1.Location = new System.Drawing.Point(43, 214);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 20;
+            this.bttOK.Location = new System.Drawing.Point(233, 214);
+            this.bttOK.Name = "bttOK";
+            this.bttOK.Size = new System.Drawing.Size(75, 23);
+            this.bttOK.TabIndex = 22;
+            this.bttOK.Text = "OK";
+            this.bttOK.UseVisualStyleBackColor = true;
+            this.bttOK.Click += new System.EventHandler(this.bttOK_Click);
             // 
-            // label9
+            // bttCancel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(44, 198);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Ordered By:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
+            this.bttCancel.Location = new System.Drawing.Point(340, 214);
+            this.bttCancel.Name = "bttCancel";
+            this.bttCancel.Size = new System.Drawing.Size(75, 23);
+            this.bttCancel.TabIndex = 23;
+            this.bttCancel.Text = "CANCEL";
+            this.bttCancel.UseVisualStyleBackColor = true;
+            this.bttCancel.Click += new System.EventHandler(this.bttCancel_Click);
+            // 
+            // loadDataPlayer
+            // 
+            this.loadDataPlayer.Location = new System.Drawing.Point(43, 234);
+            this.loadDataPlayer.Name = "loadDataPlayer";
+            this.loadDataPlayer.Size = new System.Drawing.Size(75, 23);
+            this.loadDataPlayer.TabIndex = 24;
+            this.loadDataPlayer.Text = "Load Data";
+            this.loadDataPlayer.UseVisualStyleBackColor = true;
+            this.loadDataPlayer.Click += new System.EventHandler(this.loadDataPlayer_Click);
             // 
             // UserControl2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.loadDataPlayer);
+            this.Controls.Add(this.bttCancel);
+            this.Controls.Add(this.bttOK);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bttDelete);
+            this.Controls.Add(this.bttEdit);
+            this.Controls.Add(this.bttAdd);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txtPosicao);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtPeso);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtAltura);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtSalario);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtDataNasc);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
             this.Name = "UserControl2";
             this.Size = new System.Drawing.Size(569, 428);
@@ -276,26 +291,27 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtDataNasc;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtSalario;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtAltura;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtPosicao;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bttAdd;
+        private System.Windows.Forms.Button bttEdit;
+        private System.Windows.Forms.Button bttDelete;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button bttOK;
+        private System.Windows.Forms.Button bttCancel;
+        private System.Windows.Forms.Button loadDataPlayer;
     }
 }
