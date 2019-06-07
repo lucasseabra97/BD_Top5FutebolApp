@@ -15,7 +15,18 @@ JOIN gestao_futebol.estadio as est ON est.equipa = equipa.id
 GO
 
 
+------------------------------------------------------------------------------------------------------------------
+CREATE PROC gestao_futebol.GetPlayerInfo 
+	--@id   INT
+ AS
+--SELECT *
+SELECT id, nome, data_nasc, salario, altura, peso, posicao
+FROM gestao_futebol.pessoa as pessoa JOIN gestao_futebol.jogador as jogaror ON pessoa.id = id_jogador
 
+GO
+
+
+-------------------------------------------------------------------------------------------------------------------
 
 
 
