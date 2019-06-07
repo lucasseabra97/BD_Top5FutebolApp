@@ -5,7 +5,7 @@ CREATE PROC gestao_futebol.GetTeamInfo
 	--@id   INT
  AS
 --SELECT *
-SELECT equipa.id, equipa.nome, equipa.email, equipa.data_fund, camp.nome, pessoa.nome, est.nome
+SELECT equipa.id, equipa.nome, equipa.email, equipa.data_fund, camp.nome as campeonato, pessoa.nome as presidente, est.nome as estadio
 FROM gestao_futebol.equipa as equipa JOIN gestao_futebol.campeonato as camp ON equipa.campeonato = camp.id
 JOIN gestao_futebol.preside_em as preside_em ON preside_em.team = equipa.id
 JOIN gestao_futebol.pessoa as pessoa ON pessoa.id = preside_em.president
