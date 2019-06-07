@@ -2,6 +2,23 @@ USE top_5_futebol
 GO
 
 
+CREATE FUNCTION gestao_futebol.TabelaGolosPorJogo (
+
+)
+RETURNS TABLE
+AS
+RETURN 
+
+
+SELECT *
+FROM gestao_futebol.jogo as jogo
+JOIN gestao_futebol.golo as golo ON jogo.id = golo.id_jogo
+JOIN gestao_futebol.joga_em as joga_em ON golo.jogador = joga_em.player
+
+GO
+
+
+
 CREATE FUNCTION gestao_futebol.TabelaGolosPorJogoHome (
     
 )
@@ -19,6 +36,10 @@ FROM gestao_futebol.jogo as jj left outer JOIN
 
 ON comboio.id_jogo = jj.id
 GO
+
+
+
+
 
 
 
