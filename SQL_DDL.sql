@@ -1,7 +1,7 @@
-USE p8g7
+USE top_5_futebol
 GO
 
---CREATE SCHEMA gestao_futebol
+CREATE SCHEMA gestao_futebol
 GO
 
 
