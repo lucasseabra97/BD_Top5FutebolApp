@@ -434,3 +434,20 @@ GO
 --
 ---------------------------------------------------------------------------
 
+
+
+
+CREATE PROC gestao_futebol.GetMarcadores AS
+
+
+SELECT id, nome, golos FROM
+(SELECT jogador, COUNT(*) as golos
+FROM gestao_futebol.golo
+GROUP BY jogador) as g
+JOIN gestao_futebol.pessoa as p on p.id = g.jogador
+
+ORDER BY golos DESC
+
+
+GO
+----------------------------------------------------------
