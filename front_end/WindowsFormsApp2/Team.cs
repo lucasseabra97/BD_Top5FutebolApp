@@ -14,10 +14,23 @@ public class Team
         private Int32 _teamID;
         private String _teamName;
         private String _email;
-        private Int32 _telefone;
         private String _dataFundacao;
-        private Int32 _campeonatoID;
+        private String _campeonato;
+        private String _presidente;
+        private String _estadio;
 
+
+        public String President
+        {
+            get { return _presidente; }
+            set { _presidente = value; }
+        }
+
+        public String Stadium
+        {
+            get { return _estadio; }
+            set { _estadio = value; }
+        }
         public Int32 TeamID
         {
             get { return _teamID; }
@@ -43,28 +56,22 @@ public class Team
             set { _email = value; }
         }
 
-        public Int32 Telefone
-        {
-            get { return _telefone; }
-            set { _telefone = value; }
-        }
-
         public String DataFundacao
         {   
             get { return _dataFundacao; }
             set { _dataFundacao = value; }
         }
-        public Int32 Campeonato
+        public String Campeonato
         {
-            get { return _campeonatoID; }
+            get { return _campeonato; }
             set
             {
-                if (value == 0)
+                if (value == null | String.IsNullOrEmpty(value))
                 {
-                    throw new Exception("Campeonato id field can’t be empty");
+                    throw new Exception("Campeonato field can’t be empty");
                     return;
                 }
-                _campeonatoID = value;
+                _campeonato = value;
             }
         }
 

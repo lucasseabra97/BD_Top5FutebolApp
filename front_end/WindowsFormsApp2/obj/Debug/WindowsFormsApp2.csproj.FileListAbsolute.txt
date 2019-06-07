@@ -13,7 +13,6 @@ C:\Users\LucasSeabra\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Wi
 C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
 C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
 C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
-C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojAssemblyReference.cache
 C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Form1.resources
 C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
 C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.UserControl1.resources
@@ -23,3 +22,4 @@ C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\obj
 C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CoreCompileInputs.cache
 C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
 C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\LucasSeabra\Desktop\BD\BD_Top5FutebolApp\front_end\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojAssemblyReference.cache
